@@ -30,6 +30,12 @@ class ZookeeperConfTest extends MarathonSpec {
     assert(opts.zkURL == url)
     assert(opts.zkHosts == "host1:123,host2,host3:312")
     assert(opts.zkPath == "/path")
+
+    val url_with_auth = "zk://user1:pass1@host1:123,host2,host3:312/path"
+    val opts_with_auth = conf("--zk", url_with_auth)
+    assert(opts_with_auth.zkURL == url_with_auth)
+    assert(opts_with_auth.zkHosts == "host1:123,host2,host3:312")
+    assert(opts_with_auth.zkPath == "/path")
   }
 
   test("wrongURLIsNotParsed") {
