@@ -200,6 +200,14 @@ public final class Protos {
        * </pre>
        */
       GROUP_BY(3, 3),
+      /**
+       * <code>UNLIKE = 4;</code>
+       *
+       * <pre>
+       * Field must not match the regex given by value.
+       * </pre>
+       */
+      UNLIKE(4, 4),
       ;
 
       /**
@@ -235,6 +243,14 @@ public final class Protos {
        * </pre>
        */
       public static final int GROUP_BY_VALUE = 3;
+      /**
+       * <code>UNLIKE = 4;</code>
+       *
+       * <pre>
+       * Field must not match the regex given by value.
+       * </pre>
+       */
+      public static final int UNLIKE_VALUE = 4;
 
 
       public final int getNumber() { return value; }
@@ -245,6 +261,7 @@ public final class Protos {
           case 1: return LIKE;
           case 2: return CLUSTER;
           case 3: return GROUP_BY;
+          case 4: return UNLIKE;
           default: return null;
         }
       }
@@ -8653,39 +8670,39 @@ public final class Protos {
   static {
     java.lang.String[] descriptorData = {
       "\n\016marathon.proto\022\023mesosphere.marathon\032\013m" +
-      "esos.proto\"\243\001\n\nConstraint\022\r\n\005field\030\001 \002(\t" +
+      "esos.proto\"\257\001\n\nConstraint\022\r\n\005field\030\001 \002(\t" +
       "\022:\n\010operator\030\002 \002(\0162(.mesosphere.marathon" +
-      ".Constraint.Operator\022\r\n\005value\030\003 \001(\t\";\n\010O" +
+      ".Constraint.Operator\022\r\n\005value\030\003 \001(\t\"G\n\010O" +
       "perator\022\n\n\006UNIQUE\020\000\022\010\n\004LIKE\020\001\022\013\n\007CLUSTER" +
-      "\020\002\022\014\n\010GROUP_BY\020\003\"\240\002\n\025HealthCheckDefiniti" +
-      "on\022E\n\010protocol\030\001 \002(\01623.mesosphere.marath" +
-      "on.HealthCheckDefinition.Protocol\022\024\n\tpor" +
-      "tIndex\030\002 \002(\r:\0010\022\036\n\022gracePeriodSeconds\030\003 " +
-      "\001(\r:\00215\022\033\n\017intervalSeconds\030\004 \001(\r:\00210\022\032\n\016",
-      "timeoutSeconds\030\005 \001(\r:\00220\022\017\n\004path\030\006 \001(\t:\001" +
-      "/\022!\n\026maxConsecutiveFailures\030\007 \001(\r:\0013\"\035\n\010" +
-      "Protocol\022\010\n\004HTTP\020\000\022\007\n\003TCP\020\001\"\243\003\n\021ServiceD" +
-      "efinition\022\n\n\002id\030\001 \002(\t\022\037\n\003cmd\030\002 \002(\0132\022.mes" +
-      "os.CommandInfo\022\021\n\tinstances\030\003 \002(\r\022\"\n\tres" +
-      "ources\030\004 \003(\0132\017.mesos.Resource\022\023\n\013descrip" +
-      "tion\030\005 \001(\t\022\r\n\005ports\030\006 \003(\r\0224\n\013constraints" +
-      "\030\007 \003(\0132\037.mesosphere.marathon.Constraint\022" +
-      "\022\n\010executor\030\010 \002(\t:\000\022\030\n\rtaskRateLimit\030\t \001" +
-      "(\001:\0011\0225\n\tcontainer\030\n \001(\0132\".mesosphere.ma",
-      "rathon.ContainerInfo\022)\n\007version\030\013 \001(\t:\0301" +
-      "970-01-01T00:00:00.000Z\022@\n\014healthChecks\030" +
-      "\014 \003(\0132*.mesosphere.marathon.HealthCheckD" +
-      "efinition\"\272\001\n\014MarathonTask\022\n\n\002id\030\001 \002(\t\022\014" +
-      "\n\004host\030\002 \001(\t\022\r\n\005ports\030\003 \003(\r\022$\n\nattribute" +
-      "s\030\004 \003(\0132\020.mesos.Attribute\022\021\n\tstaged_at\030\005" +
-      " \001(\003\022\022\n\nstarted_at\030\006 \001(\003\022#\n\010statuses\030\007 \003" +
-      "(\0132\021.mesos.TaskStatus\022\017\n\007version\030\010 \001(\t\"M" +
-      "\n\013MarathonApp\022\014\n\004name\030\001 \001(\t\0220\n\005tasks\030\002 \003" +
-      "(\0132!.mesosphere.marathon.MarathonTask\"1\n",
-      "\rContainerInfo\022\017\n\005image\030\001 \002(\014:\000\022\017\n\007optio" +
-      "ns\030\002 \003(\014\")\n\020EventSubscribers\022\025\n\rcallback" +
-      "_urls\030\001 \003(\tB\035\n\023mesosphere.marathonB\006Prot" +
-      "os"
+      "\020\002\022\014\n\010GROUP_BY\020\003\022\n\n\006UNLIKE\020\004\"\240\002\n\025HealthC" +
+      "heckDefinition\022E\n\010protocol\030\001 \002(\01623.mesos" +
+      "phere.marathon.HealthCheckDefinition.Pro" +
+      "tocol\022\024\n\tportIndex\030\002 \002(\r:\0010\022\036\n\022gracePeri" +
+      "odSeconds\030\003 \001(\r:\00215\022\033\n\017intervalSeconds\030\004",
+      " \001(\r:\00210\022\032\n\016timeoutSeconds\030\005 \001(\r:\00220\022\017\n\004" +
+      "path\030\006 \001(\t:\001/\022!\n\026maxConsecutiveFailures\030" +
+      "\007 \001(\r:\0013\"\035\n\010Protocol\022\010\n\004HTTP\020\000\022\007\n\003TCP\020\001\"" +
+      "\243\003\n\021ServiceDefinition\022\n\n\002id\030\001 \002(\t\022\037\n\003cmd" +
+      "\030\002 \002(\0132\022.mesos.CommandInfo\022\021\n\tinstances\030" +
+      "\003 \002(\r\022\"\n\tresources\030\004 \003(\0132\017.mesos.Resourc" +
+      "e\022\023\n\013description\030\005 \001(\t\022\r\n\005ports\030\006 \003(\r\0224\n" +
+      "\013constraints\030\007 \003(\0132\037.mesosphere.marathon" +
+      ".Constraint\022\022\n\010executor\030\010 \002(\t:\000\022\030\n\rtaskR" +
+      "ateLimit\030\t \001(\001:\0011\0225\n\tcontainer\030\n \001(\0132\".m",
+      "esosphere.marathon.ContainerInfo\022)\n\007vers" +
+      "ion\030\013 \001(\t:\0301970-01-01T00:00:00.000Z\022@\n\014h" +
+      "ealthChecks\030\014 \003(\0132*.mesosphere.marathon." +
+      "HealthCheckDefinition\"\272\001\n\014MarathonTask\022\n" +
+      "\n\002id\030\001 \002(\t\022\014\n\004host\030\002 \001(\t\022\r\n\005ports\030\003 \003(\r\022" +
+      "$\n\nattributes\030\004 \003(\0132\020.mesos.Attribute\022\021\n" +
+      "\tstaged_at\030\005 \001(\003\022\022\n\nstarted_at\030\006 \001(\003\022#\n\010" +
+      "statuses\030\007 \003(\0132\021.mesos.TaskStatus\022\017\n\007ver" +
+      "sion\030\010 \001(\t\"M\n\013MarathonApp\022\014\n\004name\030\001 \001(\t\022" +
+      "0\n\005tasks\030\002 \003(\0132!.mesosphere.marathon.Mar",
+      "athonTask\"1\n\rContainerInfo\022\017\n\005image\030\001 \002(" +
+      "\014:\000\022\017\n\007options\030\002 \003(\014\")\n\020EventSubscribers" +
+      "\022\025\n\rcallback_urls\030\001 \003(\tB\035\n\023mesosphere.ma" +
+      "rathonB\006Protos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

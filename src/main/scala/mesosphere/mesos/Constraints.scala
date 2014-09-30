@@ -70,6 +70,7 @@ object Constraints {
     private def checkHostName =
       constraint.getOperator match {
         case Operator.LIKE => offer.getHostname.matches(value)
+        case Operator.UNLIKE => !offer.getHostname.matches(value)
         // All running tasks must have a hostname that is different from the one in the offer
         case Operator.UNIQUE => tasks.forall(_.getHost != offer.getHostname)
         case Operator.CLUSTER =>
@@ -94,6 +95,14 @@ object Constraints {
             attr.get.getText.getValue.matches(value)
           } else {
             log.warn("Error, value is required for LIKE operation")
+            false
+          }
+        case Operator.UNLIKE =>
+          if (value.nonEmpty) {
+            !attr.get.getText.getValue.matches(value)
+          }
+          else {
+            log.warn("Error, value is required for UNLIKE operation")
             false
           }
       }
