@@ -16,7 +16,7 @@
         <!-- runtime deps versions -->
         <chaos.version>0.5.6</chaos.version>
         <jackson-ccm.version>0.1.0</jackson-ccm.version>
-        <mesos.version>0.18.2</mesos.version>
+        <mesos.version>0.19.1</mesos.version>
         <mesos-utils.version>0.18.2-2</mesos-utils.version>
         <akka.version>2.2.4</akka.version>
         <spray.version>1.2.1</spray.version>
