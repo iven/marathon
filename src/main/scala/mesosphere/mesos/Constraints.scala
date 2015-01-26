@@ -35,7 +35,7 @@ object Constraints {
       } else {
         // This will be reached in case we want to schedule for an attribute
         // that's not supplied.
-        false
+        checkMissingAttribute
       }
 
     private def checkGroupBy(constraintValue: String, groupFunc: (MarathonTask) => Option[String]) = {
@@ -101,6 +101,13 @@ object Constraints {
             log.warn("Error, value is required for UNLIKE operation")
             false
           }
+      }
+    }
+
+    private def checkMissingAttribute = {
+      constraint.getOperator match {
+        case Operator.UNLIKE => true
+        case _ => false
       }
     }
 
